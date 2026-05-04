@@ -1,13 +1,21 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
-  </head>
-  <body>
-    {{> header}}
-    <main class="pt-[72px] p-6">Contact</main>
-    {{> footer}}
-  </body>
-</html>
+{{> shell-start}}
+{{> header}}
+<main class="flex-1 pb-16">
+  <div class="mx-auto max-w-site px-10">
+    <section class="flex flex-col gap-10 pt-12 lg:flex-row lg:items-start">
+      <div class="lg:max-w-[50%] lg:flex-1">
+        <h1 class="font-worksansSemi text-h1page text-ink">Contact</h1>
+        <p class="mt-4 font-avenir text-body leading-[1.6em] text-ink">Looking forward to hearing from you</p>
+        <p class="mt-8 font-worksansSemi text-footerlabel leading-normal text-ink"><span class="tracking-normal">Phone</span></p>
+        <p class="mt-1 font-avenir text-body leading-[1.4em] text-ink">123-456-7890</p>
+        <p class="mt-6 font-worksansSemi text-footerlabel text-ink">Email</p>
+        <p class="mt-1 font-avenir text-body leading-[1.4em] text-ink">
+          <a href="mailto:info@mysite.com" class="text-ink no-underline hover:opacity-80">info@mysite.com</a>
+        </p>
+      </div>
+      <div class="hidden min-h-[320px] flex-1 lg:block" aria-hidden="true"></div>
+    </section>
+  </div>
+</main>
+{{> footer}}
+{{> shell-end}}

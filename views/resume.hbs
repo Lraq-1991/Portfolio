@@ -1,13 +1,92 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume</title>
-  </head>
-  <body>
-    {{> header}}
-    <main class="pt-[72px] p-6">Resume</main>
-    {{> footer}}
-  </body>
-</html>
+{{> shell-start}}
+{{> header}}
+<main class="flex-1 pb-16">
+  <div class="mx-auto max-w-site px-10">
+    <section class="pt-12">
+      <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <h1 class="font-worksansSemi text-h1page text-ink">Resume</h1>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <div class="flex flex-col gap-10 md:flex-row">
+        <div class="md:w-1/2">
+          <h2 class="font-worksansSemi text-h2section text-ink">
+            Work<br />
+            Experience
+          </h2>
+        </div>
+        <div class="md:w-1/2">
+          <p class="font-avenir text-body leading-normal text-ink"><span class="tracking-normal">2035 - Present</span></p>
+          <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">Editor</h3>
+          <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">
+            I&#39;m a paragraph. Click here to add your own text and edit me. It&rsquo;s easy. Just click &ldquo;Edit Text&rdquo; or double click me to add your own content and make changes to the font.
+          </p>
+          <p class="mt-6 font-avenir text-body leading-normal text-ink"><span class="tracking-normal">2035 - 2035</span></p>
+          <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">Writer at Large</h3>
+          <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">
+            I&#39;m a paragraph. Click here to add your own text and edit me. It&rsquo;s easy. Just click &ldquo;Edit Text&rdquo; or double click me to add your own content and make changes to the font.
+          </p>
+          <p class="mt-6 font-avenir text-body leading-normal text-ink"><span class="tracking-normal">2035 - 2035</span></p>
+          <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">Intern</h3>
+          <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">
+            I&#39;m a paragraph. Click here to add your own text and edit me. It&rsquo;s easy. Just click &ldquo;Edit Text&rdquo; or double click me to add your own content and make changes to the font.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="my-12 h-[1px] w-full bg-[#c7c7c7]"></div>
+
+    <section>
+      <div class="flex flex-col gap-10 md:flex-row">
+        <div class="md:w-1/2">
+          <h2 class="font-worksansSemi text-h2section text-ink">Education</h2>
+        </div>
+        <div class="md:w-1/2">
+          <p class="font-avenir text-body leading-normal text-ink"><span class="tracking-normal">2035 - 2035</span></p>
+          <h3 class="mt-2 font-worksansSemi text-footerlabel leading-normal text-ink">Establishment Name | Master&rsquo;s Degree</h3>
+          <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">
+            I&#39;m a paragraph. Click here to add your own text and edit me. Let your users get to know you.
+          </p>
+          <p class="mt-6 font-avenir text-body leading-normal text-ink"><span class="tracking-normal">2035 - 2035</span></p>
+          <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">Establishment Name | Bachelor&#39;s Degree</h3>
+          <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">
+            I&#39;m a paragraph. Click here to add your own text and edit me. Let your users get to know you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="my-12 h-[1px] w-full bg-[#c7c7c7]"></div>
+
+    <section>
+      <div class="flex flex-col gap-10 md:flex-row">
+        <div class="md:w-1/2">
+          <h2 class="font-worksansSemi text-h2section text-ink">
+            Skills<br />
+            &amp; Expertise
+          </h2>
+        </div>
+        <div class="md:w-1/2">
+          <ul class="list-none p-0 font-avenir text-body text-ink">
+            <li class="leading-[1.8em]">
+              <p class="m-0 font-avenir text-body leading-[1.8em] text-ink">I&#39;m a paragraph. Click here to add your own text and edit me.</p>
+            </li>
+            <li class="leading-[1.8em]">
+              <p class="m-0 font-avenir text-body leading-[1.8em] text-ink">I&#39;m a paragraph. Click here to add your own text and edit me.</p>
+            </li>
+            <li class="leading-[1.8em]">
+              <p class="m-0 font-avenir text-body leading-[1.8em] text-ink">I&#39;m a paragraph. Click here to add your own text and edit me.</p>
+            </li>
+            <li class="leading-[1.8em]">
+              <p class="m-0 font-avenir text-body leading-[1.8em] text-ink">I&#39;m a paragraph. Click here to add your own text and edit me.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+{{> footer}}
+{{> shell-end}}

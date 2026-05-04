@@ -1,0 +1,13 @@
+<script>
+(function () {
+  var btn = document.getElementById('mobile-menu-btn');
+  var panel = document.getElementById('mobile-nav-panel');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', function () {
+    var open = panel.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+})();
+</script>
+</body>
+</html>

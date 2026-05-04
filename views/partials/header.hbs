@@ -1,41 +1,62 @@
-<header class="w-full bg-[#f5f5f5] border-b border-[#e5e5e5] fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-[1440px] mx-auto px-4 md:px-8 h-[72px] flex items-center justify-between">
-    <div class="flex items-center gap-3 min-w-0">
-      <button
-        id="mobile-menu-toggle"
-        class="md:hidden text-[#162d3d] w-10 h-10 flex items-center justify-center"
-        aria-label="show mobile view"
-      >
-        <span class="inline-block w-5 h-[2px] bg-current relative before:content-[''] before:absolute before:w-5 before:h-[2px] before:bg-current before:-top-1.5 after:content-[''] after:absolute after:w-5 after:h-[2px] after:bg-current after:top-1.5"></span>
-      </button>
-      <div class="truncate">
-        <h1 class="text-[#162d3d] text-[18px] leading-[24px] font-medium truncate">Creative CV  - Website Template</h1>
+<header class="w-full">
+  <div class="mx-auto flex w-full min-h-[79px] items-center justify-between px-10">
+    <div class="flex min-w-0 flex-1 items-center gap-3">
+      <a href="/" class="flex shrink-0 items-center" aria-label="Homepage">
+        <span class="inline-block h-[25px] w-[25px] rounded-full bg-[#EEA302]" aria-hidden="true"></span>
+      </a>
+      <div class="flex min-w-0 flex-wrap items-baseline gap-3">
+        <a href="/" class="font-worksansSemi text-navname leading-none text-ink no-underline">Luis Alvarez</a>
+        <span class="font-avenir text-body leading-[1.4em] text-ink">Data Professional</span>
       </div>
     </div>
-
-    <div class="hidden md:flex items-center gap-4 text-[14px] leading-[20px] text-[#162d3d]">
-      <button type="button" class="px-3 py-2 border border-[#dcdcdc] bg-white text-[#162d3d]">show desktop view</button>
-      <button type="button" class="px-3 py-2 border border-[#dcdcdc] bg-white text-[#162d3d]">.mobile-new-ui_svg__st1{fill:currentColor}show mobile view</button>
-      <a href="{{wixEditUrl}}" class="px-4 py-2 bg-[#116dff] text-white">Edit this site</a>
-    </div>
+    <nav class="hidden md:block" aria-label="Site">
+      <ul class="flex items-center">
+        <li class="border-l border-ink first:border-l-0">
+          <a
+            href="/resume"
+            class="{{#eq active 'resume'}}font-semibold {{/eq}}inline-block px-[10px] font-avenir text-body leading-[1.4em] text-ink no-underline transition-colors duration-[400ms] hover:text-navHover"
+            {{#eq active 'resume'}}aria-current="page"{{/eq}}
+            >Resume</a
+          >
+        </li>
+        <li class="border-l border-ink first:border-l-0">
+          <a
+            href="/projects"
+            class="{{#eq active 'projects'}}font-semibold {{/eq}}inline-block px-[10px] font-avenir text-body leading-[1.4em] text-ink no-underline transition-colors duration-[400ms] hover:text-navHover"
+            {{#eq active 'projects'}}aria-current="page"{{/eq}}
+            >Projects</a
+          >
+        </li>
+        <li class="border-l border-ink first:border-l-0">
+          <a
+            href="/contact"
+            class="{{#eq active 'contact'}}font-semibold {{/eq}}inline-block px-[10px] font-avenir text-body leading-[1.4em] text-ink no-underline transition-colors duration-[400ms] hover:text-navHover"
+            {{#eq active 'contact'}}aria-current="page"{{/eq}}
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <button
+      type="button"
+      id="mobile-menu-btn"
+      class="flex h-11 w-11 shrink-0 items-center justify-center border border-ink md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-nav-panel"
+      aria-label="Open menu"
+    >
+      <svg width="20" height="14" viewBox="0 0 20 14" class="text-ink" aria-hidden="true">
+        <rect width="20" height="2" fill="currentColor" />
+        <rect y="6" width="20" height="2" fill="currentColor" />
+        <rect y="12" width="20" height="2" fill="currentColor" />
+      </svg>
+    </button>
   </div>
-
-  <div id="mobile-menu-panel" class="hidden md:hidden border-t border-[#e5e5e5] bg-[#f5f5f5] px-4 py-4">
-    <div class="space-y-3 text-[#162d3d]">
-      <h3 class="text-[14px] leading-[20px] font-semibold">Good For:</h3>
-      <p class="text-[14px] leading-[20px]">CVs, resumes and portfolios</p>
-      <h3 class="text-[14px] leading-[20px] font-semibold">Description:</h3>
-      <p class="text-[14px] leading-[20px]">
-        Draw attention to your skills and experience with this professional template. This is the perfect place to
-        highlight your qualifications, show off past projects and give a little insight on what makes
-      </p>
-      <p class="text-[14px] leading-[20px]">Click edit and create your own amazing website</p>
-      <div class="flex flex-wrap gap-2 pt-2">
-        <a href="/" class="underline">wix.com</a>
-        <a href="#" class="underline">Read More</a>
-        <a href="{{wixEditUrl}}" class="px-4 py-2 bg-[#116dff] text-white">Edit Now</a>
-        <button id="close-menu" type="button" class="px-3 py-2 border border-[#dcdcdc] bg-white">close info popup</button>
-      </div>
-    </div>
+  <div id="mobile-nav-panel" class="hidden border-t border-divider bg-page px-10 py-4 md:hidden">
+    <ul class="flex flex-col gap-3 font-avenir text-body leading-[1.4em]">
+      <li><a class="text-ink no-underline hover:text-navHover" href="/resume">Resume</a></li>
+      <li><a class="text-ink no-underline hover:text-navHover" href="/projects">Projects</a></li>
+      <li><a class="text-ink no-underline hover:text-navHover" href="/contact">Contact</a></li>
+    </ul>
   </div>
 </header>

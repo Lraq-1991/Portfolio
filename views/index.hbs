@@ -1,12 +1,49 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>wix.com</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="min-h-screen bg-white text-[#162d3d] flex items-center justify-center">
-    <a href="/website-template/view/html/2846" class="underline text-[20px]">Open Template 2846</a>
-  </body>
-</html>
+{{> shell-start}}
+{{> header}}
+<main class="flex-1">
+  <div class="mx-auto  px-10 pb-16">
+    <div class="flex flex-col items-center gap-10 w-full pt-[135px] lg:flex-row lg:items-start lg:justify-center lg:gap-[33px]">
+      <div class="shrink-0 lg:ml-[9px]">
+        <a href="/" class="block h-[480px] w-[480px] overflow-hidden rounded-full" aria-label="Homepage">
+          <img
+            src="/1648721434669.jpeg"
+            width="480"
+            height="480"
+            alt="this photo"
+            class="h-full w-full object-cover"
+            fetchpriority="high"
+          />
+        </a>
+      </div>
+      <div class="m-w-2/5 lg:pt-9">
+        <h1 class="font-worksansSemi text-hello tracking-[-0.02em] text-ink">Hello</h1>
+        <p class="mt-2 font-worksansSemi text-navname text-ink">A Bit About Me</p>
+        <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">
+          I&#39;m a paragraph. Click here to add your own text and edit me. <br> I&rsquo;m a great place for you to tell a story.
+        </p>
+        <div class="mt-10 flex flex-row flex-wrap gap-[17px]">
+          <a
+            href="/resume"
+            class="inline-flex h-[140px] w-[140px] flex-shrink-0 items-center justify-center rounded-full border border-orangeBorder bg-orange font-worksansSemi text-navname text-ink no-underline transition-[border-color,background-color] duration-[400ms] hover:border-ink hover:bg-page"
+            aria-label="Resume"
+            >Resume</a
+          >
+          <a
+            href="/projects"
+            class="inline-flex h-[140px] w-[140px] flex-shrink-0 items-center justify-center rounded-full border border-coralBorder bg-coral font-worksansSemi text-navname text-ink no-underline transition-[border-color,background-color] duration-[400ms] hover:border-ink hover:bg-page"
+            aria-label="Projects"
+            >Projects</a
+          >
+          <a
+            href="/contact"
+            class="inline-flex h-[140px] w-[140px] flex-shrink-0 items-center justify-center rounded-full border border-tealBorder bg-teal font-worksansSemi text-navname text-ink no-underline transition-[border-color,background-color] duration-[400ms] hover:border-ink hover:bg-page"
+            aria-label="Contact"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{{> footer}}
+{{> shell-end}}
