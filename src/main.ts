@@ -19,7 +19,9 @@ async function bootstrap() {
       hbs as unknown as {
         registerPartials(
           dir: string,
-          opts: { rename: (name: string) => string },
+          opts: { 
+            rename: (name: string) => string
+           },
           done: (err?: Error) => void,
         ): void;
       }
