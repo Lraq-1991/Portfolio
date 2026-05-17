@@ -11,18 +11,18 @@ export class AppController {
   @Get('resume')
   @Render('resume')
   resume() {
-    return { title: 'Resume | cv', active: 'resume' };
+    return { title: 'Resumo | cv', active: 'resumo' };
   }
 
   @Get('projects')
   @Render('projects')
   projects() {
-    return { title: 'Projects | cv', active: 'projects' };
+    return { title: 'Projetos | cv', active: 'projetos' };
   }
 
   @Get('contact')
   @Render('contact')
   contact() {
-    return { title: 'Contact | cv', active: 'contact' };
+    return { title: 'Contato | cv', active: 'contato' };
   }
 }
