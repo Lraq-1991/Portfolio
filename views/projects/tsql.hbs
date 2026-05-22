@@ -1,17 +1,15 @@
 {{> shell-start}}
 {{> header}}
-<main class="mt-2 font-avenir text-body leading-[1.6em] text-ink w-full h-full">
-  <body class="m-0 p-0">
-    <div class="flex justify-around w-full h-full">
-      <div class="w-1/2 p-4 bg-blue-500 h-full">lista de queries</div>
-      <div class="w-1/2 p-4 bg-cyan-500 flex flex-col items-center justify-around h-full gap-4">
-        <div class="bg-blue-500">Titulo</div>
-        <div class="bg-pink-500">Subtitulo</div>
-        <div class="bg-purple-500">Query Text</div>
-        <div class="bg-yellow-500">Query Output</div>
+<main class="mt-2 font-avenir text-body leading-[1.6em] text-ink w-full h-full flex-grow">
+    <div class="flex justify-around w-full grow h-[calc(100vh-15vh)] px-4">
+      <div class="w-1/5 p-4 bg-blue-500 grow">lista de queries</div>
+      <div class="w-4/5 p-4 bg-cyan-500 flex flex-col items-center justify-around h-full gap-4 grow">
+        <div class="bg-blue-500 text-2xl font-bold">Read-Only Advanced Query Presentations</div>
+        <div class="bg-pink-500 text-xl">Sales Momentum Analysis</div>
+        <div class="bg-purple-500 h-2/5 w-full">Query Text</div>
+        <div class="bg-yellow-500 h-2/5 w-full">Query Output</div>
       </div>
   </div>   
-  </body>
 </main>
 {{> footer}}
-{{> shell-end}}
+{{> shell-end}} 

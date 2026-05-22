@@ -35,7 +35,7 @@ export class AppController {
    @Get('projects/advanced-queries')
   @Render('./projects/tsql')
   tsql() {
-    return { title: 'Advanced Querys', active: 'projetos' };
+    return { title: 'Advanced Queries', active: 'projetos' };
   }
 
    @Get('projects/query-tuning')
