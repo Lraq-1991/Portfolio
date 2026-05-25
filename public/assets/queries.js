@@ -1,40 +1,119 @@
 const query1 = {
-  tittle: "Query 1",
+  tittle: "Customer Retention and Churn Analysis",
   query_text: `
         <div style="color: #7a7a7a;">/*
-            Multi-Year Customer Retention (Cohort Analysis)
+            <div style="margin-left: 3rem;">
+                The Challenge: Identify "at-risk" customers.<br><br> 
 
-            The Challenge: Group customers into "Cohorts" based on the year of their first purchase. 
-            For each cohort, track their total spending year-over-year. 
-            The final output should be pivoted so that rows are the "Join Year" 
-            and columns are "Year 1 Total," "Year 2 Total," etc., showing how much revenue each cohort generated as they aged.
+                Find all customers who made at least three purchases in 2013<br> 
+                but have not placed an order in the last six months of the available data.<br> 
+                For these customers, calculate the average time gap (in days)<br> 
+                between their orders and the difference between their last order total<br> 
+                and their lifetime average order value.<br>
+            </div>
         */</div><br>
 
-        <div style="color: #7a7a7a; font-weight: bold;">-- USE AdventureWorks2022</div>
+        <div style="color: #7a7a7a;">-- USE AdventureWorks2022</div><br>
 
-        <div style="color: #ff7b72; font-weight: bold;">WITH</div> cte <div style="color: #ff7b72; font-weight: bold;">AS</div>( <div style="color: #7a7a7a;">-- Extract Joined Year, Year of each order and amount spent</div>
-            <div style="color: #ff7b72; font-weight: bold;">SELECT</div> 
-                <div style="color: #d4bbff;">YEAR</div>(<div style="color: #d4bbff;">FIRST_VALUE</div>(OrderDate) <div style="color: #ff7b72; font-weight: bold;">OVER</div>(
-                    <div style="color: #ff7b72; font-weight: bold;">PARTITION BY</div> CustomerID
-                    <div style="color: #ff7b72; font-weight: bold;">ORDER BY</div> OrderDate
-                    <div style="color: #ff7b72; font-weight: bold;">ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</div>
-                )) JoinYear,
-                <div style="color: #d4bbff;">YEAR</div>(OrderDate) OrderYear,
-                TotalDue
-            <div style="color: #ff7b72; font-weight: bold;">FROM</div> Sales.SalesOrderHeader
+        <div style="color: #0080ff; font-weight: bold;">DECLARE</div>
+            &emsp;&emsp;@LastDate DATETIME;
+        <div>
+        <br>
+            <span style="color: #0080ff; font-weight: bold;">SELECT TOP</span> (1)
+        </div> 
+            &emsp;&emsp;@LastDate = <span style="color: #6b1cf3;">LAST_VALUE</span>(OrderDate) <span style="color: #0080ff; font-weight: bold;">OVER</span>
+            (
+            <div>
+                &emsp;&emsp;&emsp;<span style="color: #0080ff; font-weight: bold;">ORDER BY</span> OrderDate
+            </div>
+            &emsp;&emsp;)
+        <div>
+            <span style="color: #0080ff; font-weight: bold;">FROM</span> Sales.SalesOrderHeader;
+        </div>
+        <br>
+        <div>
+            <span style="color: #0080ff; font-weight: bold;">WITH</span> cte1 <span style="color: #0080ff; font-weight: bold;">AS</span> (  
+            <span style="color: #7a7a7a;">  -- Extract necessary columns to make the next calculations</span> 
+        </div>
+        <div style="margin-left: 2rem;">
+               <span style="color: #0080ff; font-weight: bold;">SELECT</span>  
+                <div style="margin-left: 2rem;">
+                    <ul>
+                        <li><span style="color: #6b1cf3;">YEAR </span>(OrderDate) OrderYear,</li>
+                        <li>OrderDate,</li>
+                        <li>SalesOrderID,</li>
+                        <li>CustomerID,</li>
+                        <li><span style="color: #6b1cf3;">DATEDIFF</span>(MONTH, @LastDate, OrderDate) LastOrderGap</li>
+                    </ul>
+                </div>
+                <div>
+                    <span style="color: #0080ff; font-weight: bold;">FROM</span> Sales.SalesOrderHeader
+                </div>
+        </div>
+        ), cte2 <span style="color: #0080ff; font-weight: bold;">AS </span>( <span style="color: #7a7a7a;">  -- Filter records with 6 months from last purchase, from 2013 and at least 3 purchases </span>
+            <div style="margin-left: 2rem;">
+                <div style="color: #0080ff; font-weight: bold;">SELECT</div> 
+                <ul style="margin-left: 2rem;">
+                    <li>OrderYear,</li>
+                    <li>CustomerID,</li>
+                    <li><span style="color: #6b1cf3;">COUNT</span>(<span style="color: #0080ff; font-weight: bold;">DISTINCT</span> SalesOrderID) Purchases</li> 
+                </ul>
+                <span style="color: #0080ff; font-weight: bold;">FROM</span> cte1<br>
+                <span style="color: #0080ff; font-weight: bold;">WHERE</span> LastOrderGap >= 6
+                <div>
+                    <span style="color: #0080ff; font-weight: bold;">&emsp;&emsp;AND</span> OrderYear = 2013
+                </div>
+                <div style="color: #0080ff; font-weight: bold;">GROUP BY</div> 
+                <ul style="margin-left: 2rem;">
+                    <li>OrderYear,</li>
+                    <li>CustomerID</li>
+                </ul>
+                <div>
+                    <span style="color: #0080ff; font-weight: bold;">HAVING </span> <span style="color: #6b1cf3;">COUNT</span>(<span style="color: #0080ff; font-weight: bold;">DISTINCT</span> SalesOrderID) >= 3 <span style="color: #7a7a7a;">-- This filter is applied after WHERE clause</span>
+                </div>
+            </div>
+            ////////////////////////////////////////////////////////////////////////////////////////
+            
+        ), cte3 <div style="color: #0080ff; font-weight: bold;">AS</div>(    <div style="color: #7a7a7a;">-- Calculate days gap, avg total per customer and last order value</div>
+            <div style="color: #0080ff; font-weight: bold;">SELECT DISTINCT</div> 
+                c2.CustomerID,
+                soh.OrderDate,
+                <div style="color: #6b1cf3;">DATEDIFF</div>(
+                    DAY,
+                    <div style="color: #6b1cf3;">LAG</div>(OrderDate, 1, OrderDate) <div style="color: #0080ff; font-weight: bold;">OVER</div>(
+                        <div style="color: #0080ff; font-weight: bold;">PARTITION BY</div> c2.CustomerID
+                        <div style="color: #0080ff; font-weight: bold;">ORDER BY</div> soh.OrderDate
+                    ),
+                    soh.OrderDate
+                ) DaysGap,  <div style="color: #7a7a7a;">-- Days gap between orders</div>
+                soh.TotalDue,
+                <div style="color: #6b1cf3;">AVG</div>(soh.TotalDue) <div style="color: #0080ff; font-weight: bold;">OVER</div>(
+                    <div style="color: #0080ff; font-weight: bold;">PARTITION BY</div> c2.CustomerID
+                ) OrderAvg, <div style="color: #7a7a7a;">-- Avg order total value</div>
+                <div style="color: #6b1cf3;">LAST_VALUE</div>(soh.TotalDue) <div style="color: #0080ff; font-weight: bold;">OVER</div>(
+                    <div style="color: #0080ff; font-weight: bold;">PARTITION BY</div> c2.CustomerID
+                    <div style="color: #0080ff; font-weight: bold;">ORDER BY</div> soh.OrderDate
+                    <div style="color: #0080ff; font-weight: bold;">ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</div>
+                ) LastOrderValue
+            <div style="color: #0080ff; font-weight: bold;">FROM</div> cte2 c2
+            <div style="color: #0080ff; font-weight: bold;">JOIN</div> Sales.SalesOrderHeader soh
+                <div style="color: #0080ff; font-weight: bold;">ON</div> c2.CustomerID = soh.CustomerID
         )
-        <div style="color: #ff7b72; font-weight: bold;">SELECT</div> <div style="color: #7a7a7a;">-- Create matrix with Join Year as rows and Order year as columns, NULL values were replaced with 0</div>
-            JoinYear <div style="color: #ff7b72; font-weight: bold;">AS</div> <div style="color: #a5d6ff;">"Join Year"</div>,
-            <div style="color: #d4bbff;">ISNULL</div>([2011],0) <div style="color: #ff7b72; font-weight: bold;">AS</div> <div style="color: #a5d6ff;">"Total Purchase 2011 $"</div>,
-            <div style="color: #d4bbff;">ISNULL</div>([2012],0) <div style="color: #ff7b72; font-weight: bold;">AS</div> <div style="color: #a5d6ff;">"Total Purchase 2012 $"</div>,
-            <div style="color: #d4bbff;">ISNULL</div>([2013],0) <div style="color: #ff7b72; font-weight: bold;">AS</div> <div style="color: #a5d6ff;">"Total Purchase 2013 $"</div>,
-            <div style="color: #d4bbff;">ISNULL</div>([2014],0) <div style="color: #ff7b72; font-weight: bold;">AS</div> <div style="color: #a5d6ff;">"Total Purchase 2014 $"</div>
-        <div style="color: #ff7b72; font-weight: bold;">FROM</div> cte SourceQuery
-        <div style="color: #ff7b72; font-weight: bold;">PIVOT</div>(
-            <div style="color: #d4bbff;">SUM</div>(TotalDue) <div style="color: #ff7b72; font-weight: bold;">FOR</div> OrderYear
-            <div style="color: #ff7b72; font-weight: bold;">IN</div> ([2011],[2012],[2013],[2014])
-        ) PivotTable
-        <div style="color: #ff7b72; font-weight: bold;">ORDER BY</div>
+        <div style="color: #0080ff; font-weight: bold;">SELECT</div> 
+            cte3.CustomerID,
+            p.FirstName + <div style="color: #a5d6ff;">' '</div> + p.LastName Customer,
+            cte3.OrderAvg - cte3.LastOrderValue OrderValueDeviation,
+            <div style="color: #6b1cf3;">AVG</div>(cte3.DaysGap) AvgDayGap
+        <div style="color: #0080ff; font-weight: bold;">FROM</div> cte3
+        <div style="color: #0080ff; font-weight: bold;">JOIN</div> Sales.Customer sc
+            <div style="color: #0080ff; font-weight: bold;">ON</div> cte3.CustomerID = sc.CustomerID
+        <div style="color: #0080ff; font-weight: bold;">JOIN</div> Person.Person p
+            <div style="color: #0080ff; font-weight: bold;">ON</div> sc.PersonID = p.BusinessEntityID
+        <div style="color: #0080ff; font-weight: bold;">GROUP BY</div> 
+            cte3.CustomerID,
+            p.FirstName + <div style="color: #a5d6ff;">' '</div> + p.LastName,
+            cte3.OrderAvg - cte3.LastOrderValue
+        <div style="color: #0080ff; font-weight: bold;">ORDER BY</div> AvgDayGap <div style="color: #0080ff; font-weight: bold;">DESC</div>;
     `,
   query_output: `
     <table border="1" class="border-separate border border-gray-400">
