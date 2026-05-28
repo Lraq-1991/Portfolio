@@ -1,4 +1,4 @@
-import query1 from '../assets/queries.js';
+import query1 from '../assets/query1.js';
 
 
 //test
