@@ -27,7 +27,7 @@ const queries = [
             <div>
                 &emsp;&emsp;&emsp;<span style="color: #0080ff; font-weight: bold;">ORDER BY</span> OrderDate
             </div>
-            &emsp;&emsp;)
+            &emsp;&emsp;) 
         <div>
             <span style="color: #0080ff; font-weight: bold;">FROM</span> Sales.SalesOrderHeader;
         </div>
