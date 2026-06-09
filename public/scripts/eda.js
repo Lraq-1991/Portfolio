@@ -1,13 +1,25 @@
-import clean_data_project from "../assets/clean_data_project";
+import loadHTML from "../assets/clean_data_project.js";
 
-console.log(clean_data_project);
+const data = await loadHTML();
 
 // First load
-window.onload = function() {
+async function onLoad() {
+  
+    document.getElementById('project-tittle').innerHTML = `
+    <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">${await data.title}</h3>
+  `;
 
-  document.querySelector('.list-button').click();
+  document.getElementById('project-content').innerHTML = `
+    <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">${await data.htmlContent}</p>
+  `;
+
+  document.querySelector('.list-button').style.backgroundColor = 'gray';
 
 }
+
+onLoad();
+
+
 // Get list buttons
 const buttons = document.querySelectorAll('.list-button');
 
@@ -25,12 +37,13 @@ buttons.forEach(button => {
     const text = this.getAttribute('data-text');
     
     document.getElementById('project-tittle').innerHTML = `
-    <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">${clean_data_project.tittle}</h3>
+    <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">${data.title}</h3>
     `;
 
-    document.getElementById('project-conttent').innerHTML = `
-    <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">${clean_data_project.htmlContent}</p>
+    document.getElementById('project-content').innerHTML = `
+    <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">${data.htmlContent}</p>
     `;
 
   });
 });
+
