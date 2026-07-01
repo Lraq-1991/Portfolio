@@ -1,9 +1,5 @@
 import data from "../assets/pbi_files.js";
 
-
-//test
-console.log(data);
-
 // First load
 window.onload = function() {
 
@@ -16,7 +12,7 @@ const buttons = document.querySelectorAll('.list-button');
 
 // Alter content based on list button
 buttons.forEach(button => {
-  button.addEventListener('click', function() {
+  button.addEventListener('click', async function() {
 
     
     buttons.forEach(button => {
@@ -28,10 +24,10 @@ buttons.forEach(button => {
     const text = this.getAttribute('data-text');
     
     document.getElementById('project-title').innerHTML = `
-    <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">${data[text].title}</h3>
+    <h3 class="mt-2 font-worksansSemi text-footerlabel text-ink">${await data[text].title}</h3>
     `;
 
-    document.getElementById('project-content').innerHTML = `${data[text].htmlContent}`;
+    document.getElementById('project-content').innerHTML = `${await data[text].htmlContent}`;
 
   });
 });
