@@ -6,20 +6,17 @@
         <h4 class="text-xl font-bold">Components</h4>
         <ul class="list-none px-4 font-avenir text-body text-ink gap-4">
           <li class="pt-2 cursor-pointer mt-1 list-button" data-text="0">Power BI Report</li>
+          <li class="pt-2 cursor-pointer mt-1 list-button" data-text="1">DAX functions</li>
+          <li class="pt-2 cursor-pointer mt-1 list-button" data-text="2">Sentiment Analysis</li>
+          <li class="pt-2 cursor-pointer mt-1 list-button" data-text="3">Dataset</li>
         </ul>
       </div>
       <div class="w-4/5 px-4 flex flex-col items-center justify-around h-full gap-4 grow">
-        <div class="text-2xl font-bold">Power BI Report</div>
-        <div class="bg-white border border-gray-300 h-5/6 w-full overflow-auto">
-        <iframe 
-          title="BussinessCustomerSentiment" 
-          style="width: 100%; height: 100%;"
-          src="https://app.powerbi.com/view?r=eyJrIjoiOWE0YTI4MjQtNDQwZS00ZDgwLThiNDUtODE3YjU1ODIxNDkzIiwidCI6IjdkNDYyMTE5LWZlNzctNGJmMi1hZTNiLTI5NzQwZTY4ZWZhMCIsImMiOjR9" 
-          frameborder="0" 
-          allowFullScreen="true"></iframe>
-        </div>
+        <div class="text-2xl font-bold" id="project-title"></div>
+        <div class="bg-white border border-gray-300 h-5/6 w-full overflow-auto" id="project-content"></div>
       </div>
   </div>   
 </main>
+<script type = "module" src="/scripts/pbi.js"></script>
 {{> footer}}
 {{> shell-end}}
