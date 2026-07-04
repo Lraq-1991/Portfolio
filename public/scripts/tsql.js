@@ -1,9 +1,6 @@
 import queries from '../assets/queries.js';
 
 
-//test
-console.log(queries);
-
 // First load
 window.onload = function() {
 
