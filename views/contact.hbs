@@ -2,6 +2,8 @@
 {{> header}}
 <main class="flex-1 pb-16">
   <div class="mx-auto max-w-7xl w-25vw">
+
+    {{!-- 
     <section class="flex flex-col gap-10 pt-12 lg:flex-row lg:items-start">
       <div class="lg:max-w-[50%] lg:flex-1">
         <h1 class="font-worksansSemi text-h1page text-ink">Contato</h1>
@@ -10,11 +12,75 @@
         <p class="mt-1 font-avenir text-body leading-[1.4em] text-ink">+55 (47) 996591907</p>
         <p class="mt-6 font-worksansSemi text-footerlabel text-ink">Email</p>
         <p class="mt-1 font-avenir text-body leading-[1.4em] text-ink">
-          <a href="mailto:alvarezquinteroluis@gmail.com" class="text-ink no-underline hover:opacity-80">alvarezquinteroluis@gmail.com</a>
+          <a href="mailto:alvarezquinteroluisgmail.com" class="text-ink no-underline hover:opacity-80">alvarezquinteroluis@gmail.com</a>
         </p>
       </div>
       <div class="hidden min-h-[320px] flex-1 lg:block" aria-hidden="true"></div>
     </section>
+
+    --}}
+
+      <section class="min-h-[50%] py-20 px-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24">
+
+      <div class="md:w-2/5">
+        <h1 class="text-4xl font-bold mb-4">Contato</h1>
+        <p class="text-gray-700 mb-12">Estou ansioso para receber notícias suas</p>
+
+        <div class="space-y-8">
+          <div>
+            <p class="font-bold mb-1">Celular</p>
+            <p class="text-gray-700">+55 (47) 996591907</p>
+          </div>
+          <div>
+            <p class="font-bold mb-1">Email</p>
+            <p class="text-gray-700">alvarezquinteroluis@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:flex-1">
+        <form class="space-y-6">
+
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm text-gray-700 mb-1">Primeiro Nome *</label>
+              <input type="text" class="w-full bg-white border border-black p-2 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-sm text-gray-700 mb-1">Sobrenome *</label>
+              <input type="text" class="w-full bg-white border border-black p-2 focus:outline-none" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm text-gray-700 mb-1">Email *</label>
+              <input type="email" class="w-full bg-white border border-black p-2 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-sm text-gray-700 mb-1">Subject</label>
+              <input type="text" class="w-full bg-white border border-black p-2 focus:outline-none" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-700 mb-1">Mensagem</label>
+            <textarea rows="8" class="w-full bg-white border border-black p-2 focus:outline-none"></textarea>
+          </div>
+
+          <div class="flex justify-center pt-2">
+            <button type="submit" class="w-full max-w-md py-3 bg-[#F2A900] rounded-full font-bold text-black">
+              Submit
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
   </div>
 </main>
 {{> footer}}
