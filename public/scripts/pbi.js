@@ -19,7 +19,7 @@ buttons.forEach(button => {
         button.style.backgroundColor = '';
       });
 
-    this.style.backgroundColor = 'gray';
+    this.style.backgroundColor = '#C0C0C0';
 
     const text = this.getAttribute('data-text');
     

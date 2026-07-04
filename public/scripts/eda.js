@@ -7,7 +7,7 @@ async function onLoad() {
     <p class="mt-2 font-avenir text-body leading-[1.6em] text-ink">${await data[0].htmlContent}</p>
   `;
 
-  document.querySelector('.list-button').style.backgroundColor = 'gray';
+  document.querySelector('.list-button').style.backgroundColor = '#C0C0C0';
 
 }
 
@@ -26,7 +26,7 @@ buttons.forEach(button => {
         button.style.backgroundColor = '';
       });
 
-    this.style.backgroundColor = 'gray';
+    this.style.backgroundColor = '#C0C0C0';
 
     const text = this.getAttribute('data-text');
 
