@@ -4,6 +4,8 @@ import queries from '../assets/queries.js';
 // First load
 window.onload = function() {
 
+  console.log('loaded');
+
   document.querySelector('.list-button').click();
 
 }
