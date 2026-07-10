@@ -5,7 +5,7 @@
 
 {{!-- Mobile Sidebar --}} 
       
-  <sider id="mobile-sider" class="sticky top-0 left-0 right-0 bg-inherit shadow-sm mobile-sider-hidden">
+  <sider id="mobile-sider" class="sticky top-0 left-0 right-0 bg-inherit shadow-sm mobile-sider-hidden md:hidden lg:hidden">
     <div id = "mobile-side-toggle" class="px-1 cursor-pointer font-bold">></div>
     <div id="mobile-query-list" class="border-t border-divider bg-page px-10 py-4 mobile-query-list-hidden">
       <h4 class="text-xl font-bold">Queries</h4>
@@ -71,8 +71,6 @@
 
 
 <script>
-
-  //
 
   // Mobile sidebar
   document.getElementById('mobile-side-toggle').addEventListener('click', function() {
